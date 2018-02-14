@@ -42,19 +42,20 @@ function draw() {
     var words = split(headlines[i], " ");
     var nextX = 0;
 
-    for (var j = 0; j < words.length; j++) {
-      
-      if (hitwords.includes(words[j].toLowerCase())) {
-        noStroke();
-        fill(244,190,214);
-        rect(nextX-1,i*lineheight-12,textWidth(words[j])+2,12);
-        fill(255);
-        text(words[j]+' ', nextX, i*lineheight);
-        nextX += textWidth(words[j]+' ');
-      } else {
-        fill (193,48,108);
-        text(words[j]+' ', nextX, i*lineheight);
-        nextX += textWidth(words[j]+' ');
+    if (i<30) {
+      for (var j = 0; j < words.length; j++) {
+        if (hitwords.includes(words[j].toLowerCase())) {
+          noStroke();
+          fill(244,190,214);
+          rect(nextX-1,i*lineheight-12,textWidth(words[j])+2,12);
+          fill(255);
+          text(words[j]+' ', nextX, i*lineheight);
+          nextX += textWidth(words[j]+' ');
+        } else {
+          fill (193,48,108);
+          text(words[j]+' ', nextX, i*lineheight);
+          nextX += textWidth(words[j]+' ');
+        }
       }
     }
   }
