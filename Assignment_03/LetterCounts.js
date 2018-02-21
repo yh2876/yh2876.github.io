@@ -53,8 +53,8 @@ function draw() {
     noStroke();
     fill(193,48,108);
     if (i<30) {
-    text(i+1,0,i*lineheight);
-    text(headlines[i], 20, i*lineheight);
+      text(i+1,0,i*lineheight);
+      text(headlines[i], 20, i*lineheight);
     }
   }
 }

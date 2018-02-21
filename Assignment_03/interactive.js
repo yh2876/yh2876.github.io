@@ -1,5 +1,7 @@
 var headlines = [];
 var abstract = [];
+var section = [];
+var maxHeadLen, minHeadLen;
 
 function preload() {
 
@@ -23,6 +25,7 @@ function setup() {
 
   extractHeadlines();
   extractAbstract();
+  extractSection();
 }
 
 function draw() {
@@ -33,16 +36,33 @@ function draw() {
   translate(margin, margin);
 
   for (var i = 0; i < headlines.length; i++) { // i++ = i+1, i-- = i-1
+
+    // draw circle representing headline length
+    // normalize the length of headings
+    var circleRadius = map(headlines[i].length,minHeadLen, maxHeadLen, margin, width-margin*2);
+    noFill();
+    stroke(100);
+    if (i<30) {ellipse(i*12,i*lineheight,circleRadius/8,circleRadius/8);}
+
     // draw headline
     if(i < 30) { // show only 30 rows
+      noStroke();
       fill(193,48,108);
       text(i+1,0,i*lineheight); // show row number
       text(headlines[i], 20, i*lineheight);
+    }
+  }
+
+  for (var i = 0; i < headlines.length; i++) { // i++ = i+1, i-- = i-1
+    // draw abstracts and url
+    if(i < 30) {
       if (mouseX >= 40 && mouseX-40-20<textWidth(headlines[i]) && mouseY-40 >= (i-1)*lineheight && mouseY-40 < i*lineheight) {
-        fill(0);
-        rect(mouseX-40-5,mouseY-40+12,width-mouseX-30+5,12+lineheight*(int(textWidth(abstract[i])/(width-mouseX-30))));
-        fill(255);
-        text(abstract[i],mouseX-40,mouseY-40+lineheight,width-mouseX-30);
+          fill(100);
+          rect(mouseX-40-5,mouseY-40+12,width-mouseX-30+5,lineheight*(2+int(textWidth(abstract[i])/(width-mouseX-30))));
+          fill(255);
+          text('Abstract:  '+abstract[i],mouseX-40,mouseY-40+lineheight*2,width-mouseX-30);
+          fill('yellow')
+          text('Section:  '+section[i],mouseX-40,mouseY-40+lineheight,width-mouseX-30);
       }
     }
   }
@@ -53,21 +73,32 @@ function extractHeadlines() {
 
   for (var i = 0; i < response.results.length; i++) {
     var h = response.results[i].title;
-    // view full API response:
-    // see http://developer.nytimes.com/top_stories_v2.json#/Console/GET/%7Bsection%7D.%7Bformat%7D
-    // besides .title, other text data available to you include:
-    // section, subsection, abstract, url, byline, item_type, update_date ...
     append(headlines, h);
+
+    if (!maxHeadLen) {
+      maxHeadLen = h.length;
+    } else if (h.length > maxHeadLen) {
+      maxHeadLen = h.length;
+    }
+
+    if (!minHeadLen) {
+      minHeadLen = h.length;
+    } else if (h.length < minHeadLen) {
+      minHeadLen = h.length;
+    }
   }
 }
 
 function extractAbstract() {
   for (var i = 0; i < response.results.length; i++) {
     var a = response.results[i].abstract;
-    // view full API response:
-    // see http://developer.nytimes.com/top_stories_v2.json#/Console/GET/%7Bsection%7D.%7Bformat%7D
-    // besides .title, other text data available to you include:
-    // section, subsection, abstract, url, byline, item_type, update_date ...
     append(abstract, a);
+  }
+}
+
+function extractSection() {
+  for (var i = 0; i < response.results.length; i++) {
+    var s = response.results[i].section;
+    append(section, s);
   }
 }
