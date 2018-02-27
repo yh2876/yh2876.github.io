@@ -36,6 +36,19 @@ function draw() {
   translate(margin, margin);
 
   for (var i = 0; i < headlines.length; i++) { // i++ = i+1, i-- = i-1
+    // draw abstracts and url
+    if(i < 30) {
+      if (mouseX >= 40 && mouseX-40-20<textWidth(headlines[i]) && mouseY-40 >= (i-1)*lineheight && mouseY-40 < i*lineheight) {
+          // change the color of the circle of the headlie
+		  var circleRadius = map(headlines[i].length,minHeadLen, maxHeadLen, margin, width-margin*2);
+		  fill(200);
+		  noStroke();
+		  ellipse(i*12,i*lineheight,circleRadius/8,circleRadius/8);
+      }
+    }
+  }
+
+  for (var i = 0; i < headlines.length; i++) { // i++ = i+1, i-- = i-1
 
     // draw circle representing headline length
     // normalize the length of headings
@@ -57,8 +70,9 @@ function draw() {
     // draw abstracts and url
     if(i < 30) {
       if (mouseX >= 40 && mouseX-40-20<textWidth(headlines[i]) && mouseY-40 >= (i-1)*lineheight && mouseY-40 < i*lineheight) {
+          // create a rectangle with size changing with the length of the abstract
           fill(100);
-          rect(mouseX-40-5,mouseY-40+12,width-mouseX-30+5,lineheight*(2+int(textWidth(abstract[i])/(width-mouseX-30))));
+          rect(mouseX-40-5,mouseY-40+12,width-mouseX-30+5,12+lineheight*(2+int(textWidth(abstract[i])/(width-mouseX-30))));
           fill(255);
           text('Abstract:  '+abstract[i],mouseX-40,mouseY-40+lineheight*2,width-mouseX-30);
           fill('yellow')
