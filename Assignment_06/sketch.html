@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Yuan's Homepage</title>
+		<style>
+	  		body {background: white; font-family: Helvetica}
+	  		h1 {background-color: gold; margin: 1px, 5px; padding: 3px; font-size: 22px;}
+	  		h2 {background-color: khaki; margin: 1px, 5px; padding: 3px; font-size: 14px;}
+	  		p {color: dimgray; text-aligh: left; margin: 1px, 5px; font-size: 12px;}
+	  		img {width:70%; height:auto;}
+	  	</style>
+
+	    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+	    <script src="p5.min.js"></script>
+	    <script src="p5.dom.min.js"></script>
+    
+    </head>
+
+
+  	<body>
+  		<h1>MISREPRESENTATION OF NYC CRIME DATA</h1>
+  		<p>How can we visualize which borough is safer in terms of park crime indicents using bar charts? The data adopted in the visualization example is provided by New York Police Department (NYPD) and is accessible via <a href="https://data.cityofnewyork.us/Public-Safety/NYC-Park-Crime-Data/ezds-sqp6">NYC Open Data</a>. The dataset was last updated on December 15, 2017; thus it only includes the park crime data for the first three quarters of 2017 (i.e., January to September). This example looks into if changing visualization approaches using different <strong>data summarizing methods</strong> or different <strong>time intervals</strong> will lead to misleading results.</p>
+
+  		<h2>Differenciation Yielded by Data Summarizing Methods</h2>
+  		<img src="NUMBER OF PARK CRIME INCIDENTS IN NYC BY BOROUGH BY QUARTER (2017).png">
+  		<p>Firstly, absolute number of park crime incidents happening in each borough is summarized. As shown in this bar chart, people might think that Manhattan is the most crime-intense borough. However, this result is doubtable that Manhattan enjoys the most parks in NYC which might drag the number of park crime indicents high with a low average. To confirm this doubt, the second bar chart visualizes the average number of crime incidents per park by borough.</p>
+  		<img src="NUMBER OF CRIME INCIDENTS PER PARK IN NYC BY BOROUGH BY QUARTER (2017).png">
+  		<p>In this chart, Manhattan ranked second in terms of average crime incidents per park. However, that of the parks located across the border of Brooklyn and Queens sharply stands out, especially for the third quarter of 2017, which ranked almost at the bottom in the first chart. This might lead to the misrepresentation that those parks are the most dangerous in NYC. This contrast raises the question if this way of summarizing crime data is the most representative way. So the next chart visualize the absolute number of parks that suffered from crime by borough.</p>
+  		<img src="NUMBER OF PARKS WITH CRIME IN NYC BY BOROUGH BY QUARTER (2017).png">
+  		<p>The third chart visualizes how many parks suffered from crimes in the first quarters. The gap of the values for Bronx, Brooklyn, Manhattan and Queens tend to be smaller compared to the previous charts. The value for Brooklyn/Manhattan drops back to the lowest again. There are two main problems of this chart; first is that it is hard to tell which borough has the highest value (maybe Brooklyn, based on my own observation), and second is that, again, given the different number of parks within each borough, the absolute number of park with crimes is not a resonable parameter evaluating the safety of a borough. As a result, the fourth chart is made to visualize the percentage of parks that suffered from crimes out of all parks in that borough; namely, how much proportion of the parks is unsafe in each borough.</p>
+  		<img src="PERCENTAGE OF PARKS WITH CRIME IN NYC BY BOROUGH BY QUARTER (2017).png">
+  		<p>After calculating the percentage value, the gap among boroughs are again narrowed. Staten Island enjoy the lowest value, which makes it the safest borough in terms of park crime. The value of Brooklyn/Queens goes up high again. This may be caused by the small number of parks of this location and the not-that-low value of crime incidents. Again, it is hard to tell which borough is the most dangerous.</p><br>
+  		<p>In conclusion, the four charts adopting four different data summarizing methods reveal different results, which confirms out assumption that data visualization can be misleading. One common feature represented by the four charts is that, the crime incidents increased in all measurements from the first quarter (January to March) to the third quarter (July to September). This might be caused by the number of people outside using the public parks, which requires further research. However, in terms of our initial goal of visualizing the safest borough, it might be enough to aggregate the crime data to a larger time interval - in this case, to the nine months as a whole. Actually, it is hard to manually adding the three bars for one single borough together to perceive which borough has the highest value. So in the next section the aggregated data is visualized with same calculation as the disaggregated ones in this section.</p>
+
+  		<h2>Differenciation Yielded by Time Intervals</h2>
+  		<img src="NUMBER OF PARK CRIME INCIDENTS IN NYC BY BOROUGH (2017).png">
+  		<img src="NUMBER OF CRIME INCIDENTS PER PARK IN NYC BY BOROUGH (2017).png">
+  		<img src="NUMBER OF PARKS WITH CRIME IN NYC BY BOROUGH (2017).png">
+  		<img src="PERCENTAGE OF PARKS WITH CRIME IN NYC BY BOROUGH (2017).png">
+  		<p>With aggregated value, the maximum and minimum become obvious while the inconsistence in results remains as discussed previously.</p>
+  		
+ 	</body>
+</html>
