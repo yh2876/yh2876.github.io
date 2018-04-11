@@ -29,6 +29,7 @@ function setup() {
 }
 
 function draw() {
+  // background
   background(240);
 
   var lineheight = 24;
