@@ -517,6 +517,7 @@ function setup() {
 }	
 
 function draw() {
+
 	translate(width/2, height/2);
 	imageMode(CENTER);
 	image(mapimg, 0,0);
@@ -587,7 +588,7 @@ function draw() {
 		}
 
 		if (val==5) {
-			text("Japanese Zelkova:  "+mn5_x.length, -380,-270);
+			text("Japanese Pagoda Tree:  "+mn5_x.length, -380,-270);
 			for (i = 1; i < mn5_x.length; i++) {
 				ellipse(mn5_x[i],mn5_y[i],1,1);
 			}
@@ -601,7 +602,7 @@ function draw() {
 		}
 
 		if (val==7) {
-			text("Japanese Pagoda Tree:  "+mn7_x.length, -380,-270);
+			text("Japanese Zelkova:  "+mn7_x.length, -380,-270);
 			for (i = 1; i < mn7_x.length; i++) {
 				ellipse(mn7_x[i],mn7_y[i],1,1);
 			}
