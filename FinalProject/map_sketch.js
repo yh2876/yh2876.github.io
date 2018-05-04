@@ -72,11 +72,13 @@ var mn15_x_05=[];
 var mn15_y_05=[];
 
 var count2005 = [];
+var count2015 = [];
 
-var slider;
-var val;
-var step = 653/14;
+var interval = 30;
+var labelY;
 
+
+var val1=0, val2=0, val3=0, val4=0, val5=0, val6=0, val7=0, val8=0, val9=0, val10=0, val11=0, val12=0, val13=0, val14=0, val15=0;
 
 // https://www.mapbox.com/help/how-access-tokens-work/
 var ACCESS_TOKEN = "pk.eyJ1IjoiaHlvb2MiLCJhIjoiY2oyc25hYmN0MDA1MTJxbGN3aXhoNG8ybSJ9.ObpFTIqmSkDFzISIRjXPrQ";
@@ -135,12 +137,74 @@ function setup() {
 	angleMode(RADIANS);
 
 	button = createButton('2005');
-	button.position(20,70);
+	button.position(20,30);
+	button.style('background-color', 'grey');
 	button.mousePressed(before);
 
 	button = createButton('2015');
-	button.position(70,70);
+	button.position(80,30);
+	button.style('background-color', 'grey');
 	button.mousePressed(after);
+
+	button = createButton('Honeylocust');
+	button.position(20,100);
+	button.mousePressed(top1);
+
+	button = createButton('Callery Pear');
+	button.position(20,130);
+	button.mousePressed(top2);
+
+	button = createButton('Ginkgo');
+	button.position(20,160);
+	button.mousePressed(top3);
+
+	button = createButton('Pin Oak');
+	button.position(20,190);
+	button.mousePressed(top4);
+
+	button = createButton('Japanese Pagoda Tree');
+	button.position(20,220);
+	button.mousePressed(top5);
+
+	button = createButton('London Plane Tree');
+	button.position(20,250);
+	button.mousePressed(top6);
+
+	button = createButton('Japanese Zelkova');
+	button.position(20,280);
+	button.mousePressed(top7);
+
+	button = createButton('Littleleaf Linden');
+	button.position(20,310);
+	button.mousePressed(top8);
+
+	button = createButton('American Elm');
+	button.position(20,340);
+	button.mousePressed(top9);
+
+	button = createButton('American Linden');
+	button.position(20,370);
+	button.mousePressed(top10);
+
+	button = createButton('Northern Red Oak');
+	button.position(20,400);
+	button.mousePressed(top11);
+
+	button = createButton('Willow Oak');
+	button.position(20,430);
+	button.mousePressed(top12);
+
+	button = createButton('Cherry');
+	button.position(20,460);
+	button.mousePressed(top13);
+
+	button = createButton('Chinese Elm');
+	button.position(20,490);
+	button.mousePressed(top14);
+
+	button = createButton('Green Ash');
+	button.position(20,520);
+	button.mousePressed(top15);
 	
 	var cx = webMercX(clon, zoom);
 	var cy = webMercY(clat, zoom);
@@ -149,6 +213,8 @@ function setup() {
 		var data = count[i].split(/,/);
 		var j = data[2];
 		append(count2005,j);
+		var j = data[1];
+		append(count2015,j);
 	}
 
 	for (i = 1; i < mn1.length; i++) {
@@ -511,9 +577,9 @@ function setup() {
 	// }
 
 	// createSlider(min, max, default value, step size)
-	slider = createSlider(1,15,1,1);
-	slider.position(80,40);
-	slider.style('width', '670px');
+	// slider = createSlider(1,15,1,1);
+	// slider.position(80,40);
+	// slider.style('width', '670px');
 }	
 
 function draw() {
@@ -522,257 +588,292 @@ function draw() {
 	imageMode(CENTER);
 	image(mapimg, 0,0);
 
-	val = slider.value()
-
-	noStroke();
-	fill('gold');
-	rect(-400,-370,800,40);
-
-	textSize(16);
-	fill(14);
-	text("RANK", -380, -335);
-	fill(20);
-	textSize(12);
-	text("1", -315, -350);
-	text("2", -315+step, -350);
-	text("3", -315+step*2, -350);
-	text("4", -315+step*3, -350);
-	text("5", -315+step*4, -350);
-	text("6", -315+step*5, -350);
-	text("7", -315+step*6, -350);
-	text("8", -315+step*7, -350);
-	text("9", -315+step*8, -350);
-	text("10", -315+step*9, -350);
-	text("11", -315+step*10, -350);
-	text("12", -315+step*11, -350);
-	text("13", -315+step*12, -350);
-	text("14", -315+step*13, -350);
-	text("15", -315+step*14, -350);
-
+	textSize(20);
+	textFont('Helvetica');
+	fill('white');
+	text('TOP 15 SPECIES IN MANHATTAN', -380, -310);
 
 	if (state==0) {
-		stroke('gold');
-		strokeWeight(2);
-		line(-325,-300,-290,-300);
+		// stroke('gold');
+		// strokeWeight(2);
+		// line(-325,-340,-290,-340);
 
 		noStroke();
-		fill('gold');
-		textSize(20)
+		textSize(12);
 
-		if (val==1) {
-			text("Honeylocust:  "+mn1_x.length, -380,-270);
+		if (val1==1) {
+			fill('Red');
+			labelY = -(390-100-0.5*interval);
+			text(count2015[0], -280, labelY);
 			for (i = 1; i < mn1_x.length; i++) {
 				ellipse(mn1_x[i],mn1_y[i],1,1);
 			}
 		}
 
-		if (val==2) {
-			text("Callery Pear:  "+mn2_x.length, -380,-270);
+		if (val2==1) {
+			fill('DarkOrange');
+			labelY = -(390-100-1.5*interval);
+			text(count2015[1], -282,labelY);
 			for (i = 1; i < mn2_x.length; i++) {
 				ellipse(mn2_x[i],mn2_y[i],1,1);
 			}
 		}
 
-		if (val==3) {
-			text("Ginkgo:  "+mn3_x.length, -380,-270);
+		if (val3==1) {
+			fill('Orange');
+			labelY = -(390-100-2.5*interval);
+			text(count2015[2], -310,labelY);
 			for (i = 1; i < mn3_x.length; i++) {
 				ellipse(mn3_x[i],mn3_y[i],1,1);
 			}
 		}
 
-		if (val==4) {
-			text("Pin Oak:  "+mn4_x.length, -380,-270);
+		if (val4==1) {
+			fill('Gold');
+			labelY = -(390-100-3.5*interval);
+			text(count2015[3], -306,labelY);
 			for (i = 1; i < mn4_x.length; i++) {
 				ellipse(mn4_x[i],mn4_y[i],1,1);
 			}
 		}
 
-		if (val==5) {
-			text("Japanese Pagoda Tree:  "+mn5_x.length, -380,-270);
+		if (val5==1) {
+			fill('Yellow');
+			labelY = -(390-100-4.5*interval);
+			text(count2015[4], -217,labelY);
 			for (i = 1; i < mn5_x.length; i++) {
 				ellipse(mn5_x[i],mn5_y[i],1,1);
 			}
 		}
 
-		if (val==6) {
-			text("London Planetree:  "+mn6_x.length, -380,-270);
+		if (val6==1) {
+			fill('GreenYellow');
+			labelY = -(390-100-5.5*interval);
+			text(count2015[5], -240,labelY);
 			for (i = 1; i < mn6_x.length; i++) {
 				ellipse(mn6_x[i],mn6_y[i],1,1);
 			}
 		}
 
-		if (val==7) {
-			text("Japanese Zelkova:  "+mn7_x.length, -380,-270);
+		if (val7==1) {
+			fill('LimeGreen');
+			labelY = -(390-100-6.5*interval);
+			text(count2015[6], -242,labelY);
 			for (i = 1; i < mn7_x.length; i++) {
 				ellipse(mn7_x[i],mn7_y[i],1,1);
 			}
 		}
 
-		if (val==8) {
-			text("Littleleaf Linden:  "+mn8_x.length, -380,-270);
+		if (val8==1) {
+			fill('MediumAquaMarine');
+			labelY = -(390-100-7.5*interval);
+			text(count2015[7], -248,labelY);
 			for (i = 1; i < mn8_x.length; i++) {
 				ellipse(mn8_x[i],mn8_y[i],1,1);
 			}
 		}
 
-		if (val==9) {
-			text("American Elm:  "+mn9_x.length, -380,-270);
+		if (val9==1) {
+			fill('DarkCyan');
+			labelY = -(390-100-8.5*interval);
+			text(count2015[8], -263,labelY);
 			for (i = 1; i < mn9_x.length; i++) {
 				ellipse(mn9_x[i],mn9_y[i],1,1);
 			}
 		}
 
-		if (val==10) {
-			text("American Linden:  "+mn10_x.length, -380,-270);
+		if (val10==1) {
+			fill('LightBlue');
+			labelY = -(390-100-9.5*interval);
+			text(count2015[9], -250,labelY);
 			for (i = 1; i < mn10_x.length; i++) {
 				ellipse(mn10_x[i],mn10_y[i],1,1);
 			}
 		}
 
-		if (val==11) {
-			text("Northern Red Oak:  "+mn11_x.length, -380,-270);
+		if (val11==1) {
+			fill('DeepSkyBlue');
+			labelY = -(390-100-10.5*interval);
+			text(count2015[10], -242,labelY);
 			for (i = 1; i < mn11_x.length; i++) {
 				ellipse(mn11_x[i],mn11_y[i],1,1);
 			}
 		}
 
-		if (val==12) {
-			text("Willow Oak:  "+mn12_x.length, -380,-270);
+		if (val12==1) {
+			fill('RoyalBlue');
+			labelY = -(390-100-11.5*interval);
+			text(count2015[11], -280,labelY);
 			for (i = 1; i < mn12_x.length; i++) {
 				ellipse(mn12_x[i],mn12_y[i],1,1);
 			}
 		}
 
-		if (val==13) {
-			text("Cherry:  "+mn13_x.length, -380,-270);
+		if (val13==1) {
+			fill('MediumPurple');
+			labelY = -(390-100-12.5*interval);
+			text(count2015[12], -305,labelY);
 			for (i = 1; i < mn13_x.length; i++) {
 				ellipse(mn13_x[i],mn13_y[i],1,1);
 			}
 		}
 
-		if (val==14) {
-			text("Chinese Elm:  "+mn14_x.length, -380,-270);
+		if (val14==1) {
+			fill('Fuchsia');
+			labelY = -(390-100-13.5*interval);
+			text(count2015[13], -275,labelY);
 			for (i = 1; i < mn14_x.length; i++) {
-			ellipse(mn14_x[i],mn14_y[i],1,1);
+				ellipse(mn14_x[i],mn14_y[i],1,1);
 			}
 		}
 
-		if (val==15) {
-			text("Green Ash:  "+mn15_x.length, -380,-270);
+		if (val15==1) {
+			fill('Pink');
+			labelY = -(390-100-14.5*interval);
+			text(count2015[14], -285,labelY);
 			for (i = 1; i < mn15_x.length; i++) {
 				ellipse(mn15_x[i],mn15_y[i],1,1);
 			}
 		}
 	} else {
 
-		stroke('gold');
-		strokeWeight(2);
-		line(-375,-300,-340,-300);
+		// stroke('gold');
+		// strokeWeight(2);
+		// line(-375,-340,-340,-340);
 
 		noStroke();
-		fill('gold');
-		textSize(20)
+		textSize(12);
 
-		if (val==1) {
-			text("Honeylocust:  "+count2005[val], -380,-270);
+		if (val1==1) {
+			fill('Red');
+			labelY = -(390-100-0.5*interval);
+			text(count2005[0], -280,labelY);
 			for (i = 1; i < mn1_x.length; i++) {
 				ellipse(mn1_x_05[i],mn1_y_05[i],1,1);
 			}
 		}
 
-		if (val==2) {
-			text("Callery Pear:  "+count2005[val], -380,-270);
+		if (val2==1) {
+			fill('DarkOrange');
+			labelY = -(390-100-1.5*interval);
+			text(count2005[1], -282,labelY);
 			for (i = 1; i < mn2_x.length; i++) {
 				ellipse(mn2_x_05[i],mn2_y_05[i],1,1);
 			}
 		}
 
-		if (val==3) {
-			text("Ginkgo:  "+count2005[val], -380,-270);
+		if (val3==1) {
+			fill('Orange');
+			labelY = -(390-100-2.5*interval);
+			text(count2005[2], -310,labelY);
 			for (i = 1; i < mn3_x.length; i++) {
 				ellipse(mn3_x_05[i],mn3_y_05[i],1,1);
 			}
 		}
 
-		if (val==4) {
-			text("Pin Oak:  "+count2005[val], -380,-270);
+		if (val4==1) {
+			fill('Gold');
+			labelY = -(390-100-3.5*interval);
+			text(count2005[3], -306,labelY);
 			for (i = 1; i < mn4_x.length; i++) {
 				ellipse(mn4_x_05[i],mn4_y_05[i],1,1);
 			}
 		}
 
-		if (val==5) {
-			text("Japanese Zelkova:  "+count2005[val], -380,-270);
+		if (val5==1) {
+			fill('Yellow');
+			labelY = -(390-100-4.5*interval);
+			text(count2005[4], -217,labelY);
 			for (i = 1; i < mn5_x.length; i++) {
 				ellipse(mn5_x_05[i],mn5_y_05[i],1,1);
 			}
 		}
 
-		if (val==6) {
-			text("London Planetree:  "+count2005[val], -380,-270);
+		if (val6==1) {
+			fill('GreenYellow');
+			labelY = -(390-100-5.5*interval);
+			text(count2005[5], -240,labelY);
 			for (i = 1; i < mn6_x.length; i++) {
 				ellipse(mn6_x_05[i],mn6_y_05[i],1,1);
 			}
 		}
 
-		if (val==7) {
-			text("Japanese Pagoda Tree:  "+count2005[val], -380,-270);
+		if (val7==1) {
+			fill('LimeGreen');
+			labelY = -(390-100-6.5*interval);
+			text(count2005[6], -242,labelY);
 			for (i = 1; i < mn7_x.length; i++) {
 				ellipse(mn7_x_05[i],mn7_y_05[i],1,1);
 			}
 		}
 
-		if (val==8) {
-			text("Littleleaf Linden:  "+count2005[val], -380,-270);
+		if (val8==1) {
+			fill('MediumAquaMarine');
+			labelY = -(390-100-7.5*interval);
+			text(count2005[7], -248,labelY);
 			for (i = 1; i < mn8_x.length; i++) {
 				ellipse(mn8_x_05[i],mn8_y_05[i],1,1);
 			}
 		}
 
-		if (val==9) {
-			text("American Elm:  "+count2005[val], -380,-270);
+		if (val9==1) {
+			fill('DarkCyan');
+			labelY = -(390-100-8.5*interval);
+			text(count2005[8], -263,labelY);
 			for (i = 1; i < mn9_x.length; i++) {
 				ellipse(mn9_x_05[i],mn9_y_05[i],1,1);
 			}
 		}
 
-		if (val==10) {
-			text("American Linden:  "+count2005[val], -380,-270);
+		if (val10==1) {
+			fill('LightBlue');
+			labelY = -(390-100-9.5*interval);
+			text(count2005[9], -250,labelY);
 			for (i = 1; i < mn10_x.length; i++) {
 				ellipse(mn10_x_05[i],mn10_y_05[i],1,1);
 			}
 		}
 
-		if (val==11) {
-			text("Northern Red Oak:  "+count2005[val], -380,-270);
+		if (val11==1) {
+			fill('DeepSkyBlue');
+			labelY = -(390-100-10.5*interval);
+			text(count2005[10], -242,labelY);
 			for (i = 1; i < mn11_x.length; i++) {
 				ellipse(mn11_x_05[i],mn11_y_05[i],1,1);
 			}
 		}
 
-		if (val==12) {
-			text("Willow Oak:  "+count2005[val], -380,-270);
+		if (val12==1) {
+			fill('RoyalBlue');
+			labelY = -(390-100-11.5*interval);
+			text(count2005[11], -280,labelY);
 			for (i = 1; i < mn12_x.length; i++) {
 				ellipse(mn12_x_05[i],mn12_y_05[i],1,1);
 			}
 		}
 
-		if (val==13) {
-			text("Cherry:  "+count2005[val], -380,-270);
+		if (val13==1) {
+			fill('MediumPurple');
+			labelY = -(390-100-12.5*interval);
+			text(count2005[12], -305,labelY);
 			for (i = 1; i < mn13_x.length; i++) {
 				ellipse(mn13_x_05[i],mn13_y_05[i],1,1);
 			}
 		}
 
-		if (val==14) {
-			text("Chinese Elm:  "+count2005[val], -380,-270);
+		if (val14==1) {
+			fill('Fuchsia');
+			labelY = -(390-100-13.5*interval);
+			text(count2005[13], -275,labelY);
 			for (i = 1; i < mn14_x.length; i++) {
 				ellipse(mn14_x_05[i],mn14_y_05[i],1,1);
 			}
 		}
 
-		if (val==15) {
-			text("Green Ash:  "+count2005[val], -380,-270);
+		if (val15==1) {
+			fill('Pink');
+			labelY = -(390-100-14.5*interval);
+			text(count2005[14], -285,labelY);
 			for (i = 1; i < mn15_x.length; i++) {
 				ellipse(mn15_x_05[i],mn15_y_05[i],1,1);
 			}
@@ -786,4 +887,124 @@ function after() {
 
 function before() {
 	state = 1
+}
+
+function top1(){
+	if (val1==1){
+		val1=0;
+	} else {
+		val1=1;
+	}
+}
+
+function top2(){
+	if (val2==1){
+		val2=0;
+	} else {
+		val2=1;
+	}
+}
+
+function top3(){
+	if (val3==1){
+		val3=0;
+	} else {
+		val3=1;
+	}
+}
+
+function top4(){
+	if (val4==1){
+		val4=0;
+	} else {
+		val4=1;
+	}
+}
+
+function top5(){
+	if (val5==1){
+		val5=0;
+	} else {
+		val5=1;
+	}
+}
+
+function top6(){
+	if (val6==1){
+		val6=0;
+	} else {
+		val6=1;
+	}
+}
+
+function top7(){
+	if (val7==1){
+		val7=0;
+	} else {
+		val7=1;
+	}
+}
+
+function top8(){
+	if (val8==1){
+		val8=0;
+	} else {
+		val8=1;
+	}
+}
+
+function top9(){
+	if (val9==1){
+		val9=0;
+	} else {
+		val9=1;
+	}
+}
+
+function top10(){
+	if (val10==1){
+		val10=0;
+	} else {
+		val10=1;
+	}
+}
+
+function top11(){
+	if (val11==1){
+		val11=0;
+	} else {
+		val11=1;
+	}
+}
+
+function top12(){
+	if (val12==1){
+		val12=0;
+	} else {
+		val12=1;
+	}
+}
+
+function top13(){
+	if (val13==1){
+		val13=0;
+	} else {
+		val13=1;
+	}
+}
+
+function top14(){
+	if (val14==1){
+		val14=0;
+	} else {
+		val14=1;
+	}
+}
+
+function top15(){
+	if (val15==1){
+		val15=0;
+	} else {
+		val15=1;
+	}
 }

@@ -115,10 +115,21 @@ function draw(){
 	if (state==1){ // aggregateView
 
 		clear();
+
 		noLoop();
-		noStroke();
+
+		noFill();
+		strokeWeight(1);
+		stroke(230);
+		rect(60, 20, map(bronxArea, 0, queensArea, 0, 1200), 100);
+		rect(60, 140, map(brooklynArea, 0, queensArea, 0, 1200), 100);
+		rect(60, 260, map(brooklynArea, 0, queensArea, 0, 1200), 100);
+		rect(60, 380, 1200, 100);
+		rect(60, 500, map(statenArea, 0, queensArea, 0, 1200), 100);
 
 		textSize(12);
+		noStroke();
+
 		// bronx
 		fill(r[3], g[3], b[3]);
 		text("Honeylocust: 9,691", map(bronxArea, 0, queensArea, 0, 1200)+80, 40-4)
@@ -272,6 +283,7 @@ function draw(){
 		
 		clear();
 		noLoop();
+
 		noStroke();
 		// print(statusColor);
 
